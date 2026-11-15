@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Virtual Gift Card Generator</title>
+    <script>
+        function generateCard(type) {
+            let cardNumber = 'CARD-' + Math.random().toString(36).substr(2, 9);
+            let balance = (Math.random() * 100).toFixed(2);
+            document.getElementById('output').innerText = `Generated ${type}: ${cardNumber} with balance: $${balance}`;
+        }
+
+        function validateCard(card) {
+            let isValid = card.startsWith('CARD-');
+            document.getElementById('validationOutput').innerText = isValid ? 'Card is valid' : 'Card is invalid';
+        }
+    </script>
+</head>
+<body>
+    <h1>Virtual Gift Card Generation</h1>
+    <button onclick="generateCard('Apple Card')">Generate Apple Card</button>
+    <button onclick="generateCard('App Store Card')">Generate App Store Card</button>
+    <button onclick="generateCard('Visa Card')">Generate Visa Card</button>
+    <button onclick="generateCard('Mastercard')">Generate Mastercard</button>
+    <p id="output"></p>
+    <h2>Validate Card</h2>
+    <input type="text" id="cardInput" placeholder="Enter Card Number" />
+    <button onclick="validateCard(document.getElementById('cardInput').value)">Validate</button>
+    <p id="validationOutput"></p>
+</body>
+</html>
